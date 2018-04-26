@@ -1,6 +1,6 @@
 // Copyright (c) 2017 PlanGrid, Inc.
 
-import { PDFJS } from 'pdfjs-dist';
+import PDFJS from 'pdfjs-dist';
 import React from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
 
@@ -69,7 +69,7 @@ export default class PDFDriver extends React.Component {
       zoom: 0,
       percent: 0,
     };
-
+    console.log(PDFJS);
     this.increaseZoom = this.increaseZoom.bind(this);
     this.reduceZoom = this.reduceZoom.bind(this);
     this.resetZoom = this.resetZoom.bind(this);
