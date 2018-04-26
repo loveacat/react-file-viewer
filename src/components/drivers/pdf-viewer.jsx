@@ -1,6 +1,7 @@
 // Copyright (c) 2017 PlanGrid, Inc.
 
 import PDFJS from 'pdfjs-dist/webpack';
+import { PDFJS as PDFJSViewer } from 'pdfjs-dist/web/pdf_viewer';
 import React from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
 
@@ -70,6 +71,8 @@ export default class PDFDriver extends React.Component {
       percent: 0,
     };
 
+    this.eventBus = new PDFJSViewer.EventBus();
+
     this.increaseZoom = this.increaseZoom.bind(this);
     this.reduceZoom = this.reduceZoom.bind(this);
     this.resetZoom = this.resetZoom.bind(this);
@@ -78,8 +81,16 @@ export default class PDFDriver extends React.Component {
   componentDidMount() {
     const { filePath } = this.props;
     const containerWidth = this.container.offsetWidth;
-    PDFJS.getDocument(filePath, null, null, this.progressCallback.bind(this)).then((pdf) => {
+    const loadingTask = PDFJS.getDocument(filePath);
+
+    loadingTask.onProgress = this.progressCallback.bind(this);
+    loadingTask.promise.then((pdf) => {
       this.setState({ pdf, containerWidth });
+    });
+
+    this.pdfViewer = new PDFJSViewer.PDFViewer({
+      container: this.container,
+      eventBus: this.eventBus,
     });
   }
 

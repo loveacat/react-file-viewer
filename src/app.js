@@ -23,7 +23,7 @@ import pdf from '../example_files/sample.pdf';
 ReactDOM.render(
   <FileViewer
     fileType="pdf"
-    filePath={pdf}
+    filePath={"https://loupe-test-attach.s3.amazonaws.com/f59e6b30-7021-f26d-aad9-e79e3e7b3450.pdf?Signature=iemqKmi%2BGo2Mo51fn51NY7sIMac%3D&Expires=1524742774&AWSAccessKeyId=AKIAIR3SWRPFTGJZFW5A&response-content-disposition=attachment%3B%20filename%3D%22gridpaper.pdf%22"}
   />,
   window.document.getElementById('app')
 );
