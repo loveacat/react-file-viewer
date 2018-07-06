@@ -7,10 +7,14 @@ const BUILD_DIR = path.resolve(__dirname, './dist');
 const APP_DIR = path.resolve(__dirname, './src');
 
 const config = {
-  entry: `${APP_DIR}/components`,
+  entry: {
+    main: `${APP_DIR}/components`,
+    'pdf.worker': 'pdfjs-dist/build/pdf.worker.entry',
+  },
   output: {
     path: BUILD_DIR,
-    filename: 'index.js',
+    publicPath: './dist/',
+    filename: '[name].bundle.js',
     library: ['FileViewer'],
     libraryTarget: 'umd',
   },

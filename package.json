@@ -3,14 +3,14 @@
   "version": "0.4.1",
   "description": "Extendable file viewer for web",
   "main": "src/components/file-viewer.jsx",
-  "module": "dist/index.js",
+  "module": "dist/main.bundle.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/plangrid/react-file-viewer.git"
   },
   "scripts": {
     "dev": "webpack -d --watch",
-    "build": "webpack -p --progress",
+    "build": "rm -rf dist && webpack -p --progress",
     "start": "node ./scripts/start.js",
     "lint": "node_modules/.bin/eslint ./src/**/*.jsx",
     "test": "node_modules/.bin/jest --env=jsdom --watch",

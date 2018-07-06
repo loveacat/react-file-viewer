@@ -4,6 +4,8 @@ import { PDFJS } from 'pdfjs-dist';
 import React from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
 
+PDFJS.workerSrc = '../../../dist/pdf.worker.bundle.js';
+
 const INCREASE_PERCENTAGE = 0.2;
 const DEFAULT_SCALE = 1.1;
 
